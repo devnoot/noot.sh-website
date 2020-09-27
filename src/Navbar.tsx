@@ -36,14 +36,10 @@ const useStyles = makeStyles((theme) => ({
     animation: '$gradient 15s infinite',
   },
   icon: {
-    color: 'white',
-  },
-  title: {
-    flexGrow: 1,
-    color: 'white',
+    color: 'white !important',
   },
   button: {
-    color: 'white',
+    color: 'white !important',
   },
 }))
 
@@ -54,9 +50,6 @@ export const Navbar: FunctionComponent = (props: AppBarProps) => {
     <AppBar position="static" className={classes.root} {...props}>
       <Toolbar>
         <MenuIcon edge="start" className={classes.icon} />
-        <Typography variant="h6" className={classes.title}>
-          noot.sh
-        </Typography>
         <Button className={classes.button}>Login</Button>
       </Toolbar>
     </AppBar>
