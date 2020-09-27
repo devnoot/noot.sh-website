@@ -25,7 +25,13 @@ export const App: FunctionComponent = () => {
       <Container>
         {isLoading && <p>Loading...</p>}
         {posts.map((post, index) => (
-          <Post key={index} title={post.title} content={post.body} />
+          <Post
+            key={index}
+            title={post.title}
+            content={post.body}
+            postedOn={post.postedOn}
+            author={post.author}
+          />
         ))}
       </Container>
     </ThemeProvider>

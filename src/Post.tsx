@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 type PostProps = {
   title: string
   content: string
+  postedOn: string
+  author: string
 }
 
 export const Post = (props: PostProps) => {
@@ -33,6 +35,9 @@ export const Post = (props: PostProps) => {
     <Card className={classes.root}>
       <CardContent>
         <PostTitle title={props.title} />
+        <Typography variant="subtitle1">
+          {props.postedOn} by {props.author}
+        </Typography>
         <div className={classes.content}>
           <Typography variant="body1">{props.content}</Typography>
         </div>
