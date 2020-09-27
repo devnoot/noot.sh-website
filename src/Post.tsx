@@ -16,9 +16,13 @@ const useStyles = makeStyles((theme) => ({
     padding: '32px',
     borderRadius: '10px',
   },
-  content: {
-    paddingTop: '32px',
+  meta: {
+    marginTop: '16px',
+    marginBottom: '16px',
+    color: 'rgb(32, 32, 32)',
+    fontSize: '0.8rem',
   },
+  content: {},
 }))
 
 type PostProps = {
@@ -35,15 +39,17 @@ export const Post = (props: PostProps) => {
     <Card className={classes.root}>
       <CardContent>
         <PostTitle title={props.title} />
-        <Typography variant="subtitle1">
-          {props.postedOn} by {props.author}
-        </Typography>
+        <div className={classes.meta}>
+          <Typography variant="subtitle1">
+            {props.postedOn} by {props.author}
+          </Typography>
+        </div>
         <div className={classes.content}>
           <Typography variant="body1">{props.content}</Typography>
         </div>
       </CardContent>
       <CardActions>
-        <Button>Click Me</Button>
+        <Button>Read More</Button>
       </CardActions>
     </Card>
   )

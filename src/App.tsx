@@ -29,7 +29,7 @@ export const App: FunctionComponent = () => {
             key={index}
             title={post.title}
             content={post.body}
-            postedOn={post.postedOn}
+            postedOn={post.postedOn.toLocaleString()}
             author={post.author}
           />
         ))}
