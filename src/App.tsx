@@ -1,13 +1,17 @@
-import React, { FunctionComponent } from 'react'
-import { ThemeProvider } from '@material-ui/core'
-import { theme } from './theme'
+import React, { FunctionComponent } from "react";
+import { ThemeProvider, CssBaseline, Container } from "@material-ui/core";
+import { theme } from "./theme";
+import { Navbar } from "./Navbar";
+import { PostTitle } from "./PostTitle";
 
 export const App: FunctionComponent = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <h1>noot.sh</h1>
-      </div>
+      <CssBaseline />
+      <Navbar />
+      <Container>
+        <PostTitle title="Hello World" />
+      </Container>
     </ThemeProvider>
-  )
-}
+  );
+};
