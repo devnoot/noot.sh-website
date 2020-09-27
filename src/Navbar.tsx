@@ -53,13 +53,11 @@ export const Navbar: FunctionComponent = (props: AppBarProps) => {
   return (
     <AppBar position="static" className={classes.root} {...props}>
       <Toolbar>
-        <MenuIcon edge="start" color="inherit" className={classes.icon} />
+        <MenuIcon edge="start" className={classes.icon} />
         <Typography variant="h6" className={classes.title}>
           noot.sh
         </Typography>
-        <Button color="inherit" className={classes.button}>
-          Login
-        </Button>
+        <Button className={classes.button}>Login</Button>
       </Toolbar>
     </AppBar>
   )
