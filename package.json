@@ -1,0 +1,25 @@
+{
+  "name": "noot.sh-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:devnoot/noot.sh-website.git",
+  "author": "devnoot <devnoot@gmail.com>",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel serve src/index.html",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/material-ui": "^0.21.8",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "cross-env": "^7.0.2",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
