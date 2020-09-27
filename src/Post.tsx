@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   makeStyles,
   Card,
@@ -6,34 +6,34 @@ import {
   Typography,
   Button,
   CardActions,
-} from '@material-ui/core'
-import { PostTitle } from './PostTitle'
+} from "@material-ui/core";
+import { PostTitle } from "./PostTitle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGow: 1,
-    margin: '32px',
-    padding: '32px',
-    borderRadius: '10px',
+    margin: theme.spacing(5, 1),
+    padding: theme.spacing(3),
+    borderRadius: "10px",
   },
   meta: {
-    marginTop: '16px',
-    marginBottom: '16px',
-    color: 'rgb(32, 32, 32)',
-    fontSize: '0.8rem',
+    marginTop: "16px",
+    marginBottom: "16px",
+    color: "rgb(32, 32, 32)",
+    fontSize: "0.8rem",
   },
   content: {},
-}))
+}));
 
 type PostProps = {
-  title: string
-  content: string
-  postedOn: string
-  author: string
-}
+  title: string;
+  content: string;
+  postedOn: string;
+  author: string;
+};
 
 export const Post = (props: PostProps) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Card className={classes.root}>
@@ -49,8 +49,13 @@ export const Post = (props: PostProps) => {
         </div>
       </CardContent>
       <CardActions>
-        <Button>Read More</Button>
+        <Button color="secondary" size="small">
+          Read More
+        </Button>
+        <Button color="secondary" size="small">
+          Share
+        </Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
