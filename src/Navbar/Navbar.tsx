@@ -61,16 +61,34 @@ export const Navbar: FunctionComponent = (props: AppBarProps) => {
   const handleLogin = async () => {
     try {
       const provider = new firebase.auth.GoogleAuthProvider()
-      const res = await firebase.auth().signInWithPopup(provider)
-      if (res.user) {
-        setProfile({
-          uid: res.user.uid,
-          email: res.user.email,
-          displayName: res.user.displayName,
-          phoneNumber: res.user.phoneNumber,
-          photoURL: res.user.photoURL,
-          providerId: res.user.providerId,
-        })
+      const {user} = await firebase.auth().signInWithPopup(provider)
+      if (user) {
+
+        // Check to see if the user already has a record in firestore
+        const doc = await firebase.firestore().collection('users').doc(user.uid).get()
+
+        if (doc.exists) {
+          // If the user has a profile already
+
+          // Set the profile
+          const firestoreProfile = doc.data()
+          setProfile(firestoreProfile)
+          return
+        } else {
+          // If the user profile does not already exist
+          const p = {
+            email: user.email,
+            displayName: user.displayName,
+            phoneNumber: user.phoneNumber,
+            photoURL: user.photoURL,
+            permissions: [],
+            roles: []
+          }
+          setProfile(p)
+          // Set the user profile in firestore
+          const db = firebase.firestore().collection('users')
+          await db.doc(user.uid).set(p)
+        }
       } else {
         throw new Error(
           'Received response from auth service with no user object!',
@@ -103,9 +121,16 @@ export const Navbar: FunctionComponent = (props: AppBarProps) => {
           </Button>
         )}
         {profile && (
-          <Button className={classes.button} onClick={handleLogout}>
-            Logout
-          </Button>
+          <React.Fragment>
+            {profile?.roles.includes('Admin') && (
+              <Button className={classes.button}>
+                Add Post
+              </Button>
+            )}
+            <Button className={classes.button} onClick={handleLogout}>
+              Logout
+            </Button>
+          </React.Fragment>
         )}
       </Toolbar>
     </AppBar>
