@@ -12,6 +12,7 @@ import {
 import { Menu } from '@material-ui/icons'
 import { FirebaseContext } from '../contexts/FirebaseContext'
 import { ProfileContext } from '../contexts/ProfileContext'
+import { Link } from 'react-router-dom'
 
 const MenuIcon = (props: IconButtonProps) => (
   <IconButton {...props}>
@@ -123,9 +124,11 @@ export const Navbar: FunctionComponent = (props: AppBarProps) => {
         {profile && (
           <React.Fragment>
             {profile?.roles.includes('Admin') && (
-              <Button className={classes.button}>
-                Add Post
-              </Button>
+                <Link to="/post/add">
+                  <Button className={classes.button}>
+                    Add Post
+                  </Button>
+                </Link>
             )}
             <Button className={classes.button} onClick={handleLogout}>
               Logout
